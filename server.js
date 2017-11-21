@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const app = express();
 
+const port = process.env.PORT || 3000;
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
@@ -30,7 +31,6 @@ app.get('/bad', (req, res) => {
   res.send({BadRequest: "No page found, unable to handle request"});
 })
 
-const port_no = 3000;
-app.listen(port_no, () =>{
-  console.log('server started listening at port no '+port_no);
+app.listen(port, () =>{
+  console.log(`server started listening at port no ${port}`);
 });
